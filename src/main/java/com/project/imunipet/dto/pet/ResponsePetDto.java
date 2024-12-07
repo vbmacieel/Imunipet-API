@@ -10,5 +10,6 @@ public class ResponsePetDto {
     private Long id;
     private String name;
     private LocalDate birthDate;
+    private String race;
     private Integer age;
 }

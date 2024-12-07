@@ -16,13 +16,15 @@ public class Pet {
     private Long id;
     private String name;
     private LocalDate birthDate;
+    private String race;
     private Integer age;
 
     public Pet() {
     }
 
-    public Pet(String name, LocalDate birthDate, Integer age) {
+    public Pet(String name, LocalDate birthDate, String race, Integer age) {
         this.name = name;
+        this.race = race;
         this.birthDate = birthDate;
         this.age = age;   
     }

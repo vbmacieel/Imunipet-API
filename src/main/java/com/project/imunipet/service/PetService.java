@@ -44,6 +44,7 @@ public class PetService {
         return repository.findById(id).map(pet -> {
             pet.setName(dto.getName());
             pet.setBirthDate(dto.getBirthDate());
+            pet.setRace(dto.getRace());
             pet.setAge(dto.getAge());
 
             repository.save(pet);

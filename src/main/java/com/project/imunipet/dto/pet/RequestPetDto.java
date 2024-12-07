@@ -15,5 +15,6 @@ public class RequestPetDto {
 
     @NotNull
     private LocalDate birthDate;
+    private String race;
     private Integer age;
 }

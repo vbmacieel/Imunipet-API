@@ -1,6 +1,7 @@
 package com.project.imunipet.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.project.imunipet.dto.pet.RequestPetDto;
 import com.project.imunipet.dto.pet.ResponsePetDto;
 import com.project.imunipet.entity.Pet;
-import com.project.imunipet.exception.PetNotFoundException;
+import com.project.imunipet.exception.ResourceNotFoundException;
 import com.project.imunipet.repository.PetRepository;
 
 @Service
@@ -35,7 +36,7 @@ public class PetService {
     }
 
     public ResponsePetDto findPetById(Long id) {
-        Pet pet = repository.findById(id).orElseThrow(() -> new PetNotFoundException(id));
+        Pet pet = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
         return modelMapper.map(pet, ResponsePetDto.class);
     }
 
@@ -57,6 +58,8 @@ public class PetService {
     }
 
     public void deletePet(Long id) {
+        Optional<Pet> optional = repository.findById(id);
+        if (optional.isEmpty()) throw new ResourceNotFoundException(id);
         repository.deleteById(id);
     }
 }

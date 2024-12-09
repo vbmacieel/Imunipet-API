@@ -1,6 +1,9 @@
 package com.project.imunipet.dto.pet;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import com.project.imunipet.entity.Vaccine;
 
 import lombok.Data;
 
@@ -12,4 +15,5 @@ public class ResponsePetDto {
     private LocalDate birthDate;
     private String race;
     private Integer age;
+    private List<Vaccine> vaccines;
 }

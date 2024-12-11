@@ -17,7 +17,7 @@ import com.project.imunipet.repository.PetRepository;
 public class PetService {
 
     private final PetRepository repository;
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     public PetService(PetRepository repository) {
         this.repository = repository;
@@ -41,21 +41,11 @@ public class PetService {
     }
 
     public ResponsePetDto updatePet(RequestPetDto dto, Long id) {
-        return repository.findById(id).map(pet -> {
-            pet.setName(dto.getName());
-            pet.setBirthDate(dto.getBirthDate());
-            pet.setRace(dto.getRace());
-            pet.setAge(dto.getAge());
+        Pet pet = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+        modelMapper.map(pet, dto);
 
-            repository.save(pet);
-
-            return modelMapper.map(pet, ResponsePetDto.class);
-        }).orElseGet(() -> {
-            Pet newPet = modelMapper.map(dto, Pet.class);
-            repository.save(newPet);
-
-            return modelMapper.map(newPet, ResponsePetDto.class);
-        });
+        Pet updatePet = repository.save(pet);
+        return modelMapper.map(updatePet, ResponsePetDto.class);
     }
 
     public void deletePet(Long id) {

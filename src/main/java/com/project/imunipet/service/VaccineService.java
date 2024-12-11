@@ -19,7 +19,7 @@ public class VaccineService {
 
     private final VaccineRepository vaccineRepository;
     private final PetRepository petRepository;
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     public VaccineService(VaccineRepository vaccineRepository, PetRepository petRepository) {
         this.vaccineRepository = vaccineRepository;
@@ -44,5 +44,21 @@ public class VaccineService {
     public ResponseVaccineDto findVaccineById(Long id) {
         Vaccine vaccine = vaccineRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
         return modelMapper.map(vaccine, ResponseVaccineDto.class);
+    }
+
+    public ResponseVaccineDto updateVaccine(Long id, RequestVaccineDto dto) {
+        Vaccine vaccine = vaccineRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+        modelMapper.map(dto, vaccine);
+
+        Vaccine updatedVaccine = vaccineRepository.save(vaccine);
+        return modelMapper.map(updatedVaccine, ResponseVaccineDto.class);
+    }
+
+    public void deleteVaccine(Long id) {
+        if (!vaccineRepository.existsById(id)) {
+            throw new ResourceNotFoundException(id);
+        }
+
+        vaccineRepository.deleteById(id);
     }
 }

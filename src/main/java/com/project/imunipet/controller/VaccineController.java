@@ -26,8 +26,8 @@ public class VaccineController {
 
     @GetMapping("pets/{petId}/vaccines")
     public ResponseEntity<List<ResponseVaccineDto>> findAllVaccinesFromPet(@PathVariable Long petId) {
-        List<ResponseVaccineDto> responceVaccines = service.findAllVaccinesToPetById(petId);
-        return ResponseEntity.ok(responceVaccines);
+        List<ResponseVaccineDto> responseVaccine = service.findAllVaccinesToPetById(petId);
+        return ResponseEntity.ok(responseVaccine);
     }
 
     @PostMapping("vaccines/{petId}")
@@ -42,5 +42,18 @@ public class VaccineController {
     public ResponseEntity<ResponseVaccineDto> findVaccineById(@PathVariable Long id) {
         ResponseVaccineDto responseVaccine = service.findVaccineById(id);
         return ResponseEntity.ok(responseVaccine);
+    }
+
+    @PutMapping("vaccines/{id}")
+    public ResponseEntity<ResponseVaccineDto> updateVaccine(@Valid @RequestBody RequestVaccineDto dto,
+            @PathVariable Long id) {
+        ResponseVaccineDto responseVaccine = service.updateVaccine(id, dto);
+        return ResponseEntity.ok(responseVaccine);
+    }
+
+    @DeleteMapping("vaccines/{id}")
+    public ResponseEntity<Void> deleteVaccine(@PathVariable Long id) {
+        service.deleteVaccine(id);
+        return ResponseEntity.noContent().build();
     }
 }

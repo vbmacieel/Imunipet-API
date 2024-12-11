@@ -21,10 +21,10 @@ public class VaccineService {
     private final PetRepository petRepository;
     private final ModelMapper modelMapper;
 
-    public VaccineService(VaccineRepository vaccineRepository, PetRepository petRepository) {
+    public VaccineService(VaccineRepository vaccineRepository, PetRepository petRepository, ModelMapper modelMapper) {
         this.vaccineRepository = vaccineRepository;
         this.petRepository = petRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
     public ResponseVaccineDto saveNewVaccine(Long petId, RequestVaccineDto dto) {

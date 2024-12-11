@@ -19,9 +19,9 @@ public class PetService {
     private final PetRepository repository;
     private final ModelMapper modelMapper;
 
-    public PetService(PetRepository repository) {
+    public PetService(PetRepository repository, ModelMapper modelMapper) {
         this.repository = repository;
-        modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
     public List<ResponsePetDto> findAllPets() {

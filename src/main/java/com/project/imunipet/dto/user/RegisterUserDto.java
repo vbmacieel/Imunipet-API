@@ -1,7 +1,5 @@
 package com.project.imunipet.dto.user;
 
-import com.project.imunipet.entity.Role;
-
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -20,5 +18,5 @@ public class RegisterUserDto {
     @NotNull
     private String password;
     @NotNull
-    private Role role;
+    private String role;
 }

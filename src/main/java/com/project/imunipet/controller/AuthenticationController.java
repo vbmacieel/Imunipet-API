@@ -42,7 +42,7 @@ public class AuthenticationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseUserDto> getUserById(@PathVariable String id) {
+    public ResponseEntity<ResponseUserDto> getUserById(@PathVariable Long id) {
         ResponseUserDto responseUser = service.findUserById(id);
         return ResponseEntity.ok(responseUser);
     }

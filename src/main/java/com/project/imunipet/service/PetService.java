@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.imunipet.dto.pet.RequestPetDto;
 import com.project.imunipet.dto.pet.ResponsePetDto;
-import com.project.imunipet.entity.Pet;
+import com.project.imunipet.entity.pet.Pet;
 import com.project.imunipet.exception.ResourceNotFoundException;
 import com.project.imunipet.repository.PetRepository;
 

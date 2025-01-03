@@ -3,7 +3,7 @@ package com.project.imunipet.dto.pet;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.project.imunipet.entity.Vaccine;
+import com.project.imunipet.entity.vaccine.Vaccine;
 
 import lombok.Data;
 

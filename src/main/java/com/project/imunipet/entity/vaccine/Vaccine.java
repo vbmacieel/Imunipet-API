@@ -1,10 +1,10 @@
-package com.project.imunipet.entity;
+package com.project.imunipet.entity.vaccine;
 
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.Column;
+import com.project.imunipet.entity.pet.Pet;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

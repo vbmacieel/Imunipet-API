@@ -1,4 +1,4 @@
-package com.project.imunipet.entity;
+package com.project.imunipet.entity.pet;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,11 +6,15 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import com.project.imunipet.entity.vaccine.Vaccine;
+import com.project.imunipet.entity.user.Client;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +31,11 @@ public class Pet {
     private LocalDate birthDate;
     private String race;
     private Integer age;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    @JsonManagedReference
+    private Client client;
 
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

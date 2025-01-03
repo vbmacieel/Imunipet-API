@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.project.imunipet.dto.vaccine.RequestVaccineDto;
 import com.project.imunipet.dto.vaccine.ResponseVaccineDto;
-import com.project.imunipet.entity.Pet;
-import com.project.imunipet.entity.Vaccine;
+import com.project.imunipet.entity.pet.Pet;
+import com.project.imunipet.entity.vaccine.Vaccine;
 import com.project.imunipet.exception.ResourceNotFoundException;
 import com.project.imunipet.repository.PetRepository;
 import com.project.imunipet.repository.VaccineRepository;
